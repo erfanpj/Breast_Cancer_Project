@@ -52,7 +52,7 @@ The MLP was selected, with standard scaling, PCA to 10 components, one hidden la
 
 | Model | F1 | Recall (sensitivity) | Precision | Specificity | Accuracy | Missed malignant |
 |---|---|---|---|---|---|---|
-| Selected MLP | 0.951 | 0.906 | 1.000 | 1.000 | 0.965 | 5 of 53 |
+| Selected MLP | 0.950 | 0.906 | 1.000 | 1.000 | 0.965 | 5 of 53 |
 | Untuned logistic regression | 0.951 | 0.925 | 0.980 | 0.989 | 0.965 | 4 of 53 |
 | Majority class | 0.000 | 0.000 | – | 1.000 | 0.629 | 53 of 53 |
 

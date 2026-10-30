@@ -101,4 +101,4 @@ The run should reproduce the files in `results/`. The only expected warnings com
 
 ## Attribution
 
-Dataset: Breast Cancer Wisconsin (Diagnostic), as shipped with scikit-learn (`sklearn.datasets.load_breast_cancer`), originally from the UCI Machine Learning Repository. I wrote the original script in 2025. The 2026 evaluation correction was implemented with help from an AI coding assistant. The numbers above come from the saved runs in `results/`.
+Dataset: Breast Cancer Wisconsin (Diagnostic) by William Wolberg, Olvi Mangasarian, Nick Street and W. Street (1993), UCI Machine Learning Repository, https://doi.org/10.24432/C5DW2B, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The project loads the copy bundled with scikit-learn (`sklearn.datasets.load_breast_cancer`); no data file is stored in this repository, only sample indices for the split in `results/split.json`. I wrote the original script in 2025. The 2026 evaluation correction was implemented with help from an AI coding assistant. The numbers above come from the saved runs in `results/`.

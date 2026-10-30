@@ -39,14 +39,14 @@ Measured on Linux with Python 3.13.5 and scikit-learn 1.9.1. Two consecutive run
 | Neural network (MLP), tuned | 0.961 ± 0.031 | 0.954 ± 0.050 | 0.970 ± 0.037 |
 | Baseline: logistic regression, untuned | 0.959 ± 0.029 | 0.950 ± 0.051 | 0.972 ± 0.036 |
 | Logistic regression, tuned | 0.953 ± 0.034 | 0.939 ± 0.057 | 0.970 ± 0.040 |
-| SVM, tuned | 0.948 ± 0.029 | 0.935 ± 0.047 | 0.963 ± 0.038 |
-| k-nearest neighbours, tuned | 0.947 ± 0.024 | 0.927 ± 0.037 | 0.971 ± 0.034 |
-| Random forest, tuned | 0.933 ± 0.039 | 0.926 ± 0.049 | 0.942 ± 0.055 |
-| Decision tree, tuned | 0.906 ± 0.031 | 0.887 ± 0.062 | 0.930 ± 0.039 |
-| Gaussian naive Bayes | 0.901 ± 0.037 | 0.880 ± 0.049 | 0.926 ± 0.049 |
+| SVM, tuned | 0.948 ± 0.028 | 0.935 ± 0.047 | 0.963 ± 0.038 |
+| k-nearest neighbours, tuned | 0.947 ± 0.024 | 0.926 ± 0.037 | 0.971 ± 0.034 |
+| Random forest, tuned | 0.933 ± 0.039 | 0.926 ± 0.049 | 0.941 ± 0.055 |
+| Decision tree, tuned | 0.906 ± 0.031 | 0.886 ± 0.062 | 0.930 ± 0.039 |
+| Gaussian naive Bayes | 0.901 ± 0.037 | 0.880 ± 0.049 | 0.925 ± 0.049 |
 | Baseline: majority class | 0.000 | 0.000 | 0.000 |
 
-The MLP was selected, with standard scaling, PCA to 10 components, one hidden layer of 50 units and alpha 0.0001. Its lead over the untuned logistic regression (0.961 vs 0.959) is much smaller than the fold-to-fold variation, so I read it as a tie, not a real advantage.
+The MLP was selected, with standard scaling, PCA to 10 components, one hidden layer of 50 units and alpha 0.0001. Its lead over the untuned logistic regression (0.961 vs 0.959) is much smaller than the fold-to-fold variation, so it is best read as a tie, not a real advantage.
 
 **Held-out test set** (143 samples: 53 malignant, 90 benign; scored once):
 
@@ -101,4 +101,4 @@ The run should reproduce the files in `results/`. The only expected warnings com
 
 ## Attribution
 
-Dataset: Breast Cancer Wisconsin (Diagnostic), as shipped with scikit-learn (`sklearn.datasets.load_breast_cancer`), originally from the UCI Machine Learning Repository. I wrote the original script in 2025. The 2026 evaluation correction was implemented with help from an AI coding assistant. I reviewed the changes, and the results above come from the saved runs.
+Dataset: Breast Cancer Wisconsin (Diagnostic), as shipped with scikit-learn (`sklearn.datasets.load_breast_cancer`), originally from the UCI Machine Learning Repository. I wrote the original script in 2025. The 2026 evaluation correction was implemented with help from an AI coding assistant. The numbers above come from the saved runs in `results/`.

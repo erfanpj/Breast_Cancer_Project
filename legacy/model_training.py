@@ -1,3 +1,13 @@
+# ORIGINAL LEARNING SCRIPT (January 2025), kept for reference.
+# Known evaluation problems, corrected in evaluate.py (October 2026):
+#  - PCA is fitted on all samples before the train/test split (test data leaks into PCA).
+#  - The scaler sits outside GridSearchCV, so inner validation folds are scaled with their own data.
+#  - The "best" model is chosen by its test-set F1, so the reported test score is optimistic.
+#  - scikit-learn encodes 0 = malignant, 1 = benign. The confusion-matrix labels below call
+#    class 0 "No Cancer" (it is malignant), and precision/recall/F1 use the benign class as positive.
+#  - Several models have no random_state, so repeated runs give different numbers.
+# Do not use the scores printed by this script as a benchmark.
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt

@@ -99,6 +99,10 @@ On the tested setup (Linux, Python 3.13.5, the pinned versions) the run reproduc
 - `results/`: saved split, nested-CV scores, frozen protocol, test metrics and confusion matrix
 - `legacy/model_training.py`: the original 2025 script, kept for reference. Do not use its printed scores.
 
+## Licence
+
+The code in this repository is released under the [MIT License](LICENSE). The dataset is not stored here and is not covered by that licence: Breast Cancer Wisconsin (Diagnostic) is published by the UCI Machine Learning Repository under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (Wolberg, Mangasarian, Street and Street, 1993, https://doi.org/10.24432/C5DW2B).
+
 ## Attribution
 
 Dataset: Breast Cancer Wisconsin (Diagnostic) by William Wolberg, Olvi Mangasarian, Nick Street and W. Street (1993), UCI Machine Learning Repository, https://doi.org/10.24432/C5DW2B, licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The project loads the copy bundled with scikit-learn (`sklearn.datasets.load_breast_cancer`); no data file is stored in this repository, only sample indices for the split in `results/split.json`. I wrote the original script in 2025. The 2026 evaluation correction was implemented with help from an AI coding assistant. The numbers above come from the saved runs in `results/`.

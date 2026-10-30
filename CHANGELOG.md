@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-10-30: licence
+
+- Added the MIT License for the code. The dataset remains under its own CC BY 4.0 licence (UCI) and is not stored in this repository.
+
 ## 2026-10-30: corrected evaluation
 
 This release changes how the classifier comparison is evaluated. The original January 2025 script had several problems that made its scores optimistic or mislabelled, so its printed numbers should not be used.

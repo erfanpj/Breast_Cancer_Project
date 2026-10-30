@@ -13,6 +13,8 @@ Procedure (fixed before the test set is used):
    picked the hyperparameters. Two baselines go through the same outer folds.
 4. The candidate with the highest mean outer-CV F1 for the malignant class is selected,
    re-tuned on the full development set, and the protocol is written to disk.
+   A descriptive PCA on/off comparison (development data only) is saved alongside;
+   it does not influence the selection.
 5. Only then is the test set scored, once, for the selected model and the two baselines.
 
 Positive class: malignant. scikit-learn's raw target is 0 = malignant, 1 = benign, so this
@@ -144,6 +146,27 @@ def nested_cv(X_dev, y_dev, n_jobs=-1):
     return pd.DataFrame(rows)
 
 
+def pca_ablation(X_dev, y_dev, families, n_jobs=-1):
+    """Descriptive only: nested-CV F1 with PCA forced off / 5 / 10, on development data.
+
+    Runs after selection has been decided and is never used to choose the model."""
+    out = {}
+    options = {"no_pca": "passthrough", "pca_5": PCA(n_components=5, random_state=SEED),
+               "pca_10": PCA(n_components=10, random_state=SEED)}
+    for fam in families:
+        pipe, grid = candidates()[fam]
+        out[fam] = {}
+        for label, reduce in options.items():
+            g = {**grid, "reduce": [reduce]}
+            res = cross_validate(GridSearchCV(pipe, g, scoring=SELECTION_METRIC, cv=INNER_CV, n_jobs=1),
+                                 X_dev, y_dev, cv=OUTER_CV, scoring="f1", n_jobs=n_jobs)
+            out[fam][label] = {"f1_mean": round(float(res["test_score"].mean()), 6),
+                               "f1_std": round(float(res["test_score"].std(ddof=1)), 6)}
+            print(f"  PCA ablation {fam:20s} {label:7s} F1={out[fam][label]['f1_mean']:.4f}"
+                  f"±{out[fam][label]['f1_std']:.4f}", flush=True)
+    return out
+
+
 def summarize_cv(cv_df):
     agg = cv_df.groupby("candidate", sort=False)[list(CV_SCORING)].agg(["mean", "std"])
     summary = {}
@@ -242,6 +265,9 @@ def main():
     _write_json(RESULTS / "cv_summary.json", summary)
 
     chosen = select(summary)
+    families = sorted({"logistic_regression", chosen} & set(candidates()))
+    print("PCA ablation on development data (descriptive, not used for selection):")
+    _write_json(RESULTS / "pca_ablation_dev_cv.json", pca_ablation(X_dev, y_dev, families))
     if chosen in candidates():
         pipe, grid = candidates()[chosen]
         gs = tune(pipe, grid, X_dev, y_dev, n_jobs=-1)

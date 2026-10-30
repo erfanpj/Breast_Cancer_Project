@@ -1,0 +1,65 @@
+{
+  "models": {
+    "baseline_logreg_default": {
+      "accuracy": 0.965035,
+      "balanced_accuracy": 0.956709,
+      "confusion_matrix": {
+        "fn_malignant_as_benign": 4,
+        "fp_benign_as_malignant": 1,
+        "tn_benign_as_benign": 89,
+        "tp_malignant_as_malignant": 49
+      },
+      "f1_malignant": 0.951456,
+      "precision_malignant": 0.98,
+      "recall_malignant_sensitivity": 0.924528,
+      "roc_auc": 0.996226,
+      "role": "baseline",
+      "specificity_benign_recall": 0.988889
+    },
+    "baseline_majority_class": {
+      "accuracy": 0.629371,
+      "balanced_accuracy": 0.5,
+      "confusion_matrix": {
+        "fn_malignant_as_benign": 53,
+        "fp_benign_as_malignant": 0,
+        "tn_benign_as_benign": 90,
+        "tp_malignant_as_malignant": 0
+      },
+      "f1_malignant": 0.0,
+      "precision_malignant": 0.0,
+      "recall_malignant_sensitivity": 0.0,
+      "roc_auc": 0.5,
+      "role": "baseline",
+      "specificity_benign_recall": 1.0
+    },
+    "mlp": {
+      "accuracy": 0.965035,
+      "balanced_accuracy": 0.95283,
+      "bootstrap": {
+        "f1_malignant_95ci": [
+          0.901099,
+          0.989899
+        ],
+        "method": "percentile bootstrap over test samples, 2000 resamples, seed 42",
+        "recall_malignant_95ci": [
+          0.82,
+          0.98
+        ]
+      },
+      "confusion_matrix": {
+        "fn_malignant_as_benign": 5,
+        "fp_benign_as_malignant": 0,
+        "tn_benign_as_benign": 90,
+        "tp_malignant_as_malignant": 48
+      },
+      "f1_malignant": 0.950495,
+      "precision_malignant": 1.0,
+      "recall_malignant_sensitivity": 0.90566,
+      "roc_auc": 0.996855,
+      "role": "selected",
+      "specificity_benign_recall": 1.0
+    }
+  },
+  "n_test": 143,
+  "protocol_sha256": "834962caca69d572402e4cf4b29d2a84478cc476b7536e6a11ed048aa698ebe6"
+}

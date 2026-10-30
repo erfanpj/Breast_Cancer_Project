@@ -1,0 +1,62 @@
+{
+  "baselines": [
+    "baseline_logreg_default",
+    "baseline_majority_class"
+  ],
+  "candidates": [
+    "decision_tree",
+    "gaussian_nb",
+    "knn",
+    "logistic_regression",
+    "mlp",
+    "random_forest",
+    "svm"
+  ],
+  "inner_cv": "StratifiedKFold(5, shuffle=True, random_state=42)",
+  "label_encoding": {
+    "0": "benign",
+    "1": "malignant"
+  },
+  "outer_cv": "RepeatedStratifiedKFold(5 splits x 3 repeats, random_state=42)",
+  "positive_class": "malignant",
+  "preprocessing_search": {
+    "reduce": [
+      "none",
+      "PCA(5)",
+      "PCA(10)"
+    ],
+    "scale": [
+      "StandardScaler",
+      "MinMaxScaler"
+    ]
+  },
+  "seed": 42,
+  "selected_candidate": "mlp",
+  "selected_inner_cv_f1_on_full_dev": 0.974578,
+  "selected_outer_cv": {
+    "accuracy_mean": 0.971035,
+    "accuracy_std": 0.022993,
+    "balanced_accuracy_mean": 0.96755,
+    "balanced_accuracy_std": 0.026655,
+    "f1_mean": 0.960727,
+    "f1_std": 0.031226,
+    "precision_mean": 0.969788,
+    "precision_std": 0.03701,
+    "recall_mean": 0.953898,
+    "recall_std": 0.049935
+  },
+  "selected_params": {
+    "clf__alpha": 0.0001,
+    "clf__hidden_layer_sizes": "(50,)",
+    "reduce": "PCA(n_components=10, random_state=42)",
+    "scale": "StandardScaler()"
+  },
+  "selection_metric": "F1 of the malignant class (outer nested-CV mean on development data)",
+  "test_indices_sha256": "4dd9d8eb5a60af62024b5ee80c3456f23c15022b8b87ad14f25732467cbec163",
+  "versions": {
+    "numpy": "2.5.4",
+    "pandas": "3.1.0",
+    "python": "3.13.5",
+    "scikit-learn": "1.9.1"
+  }
+}

@@ -8,7 +8,7 @@ It is an educational benchmark. The results say nothing about diagnosing real pa
 
 The project started in January 2025 as a learning exercise (`legacy/model_training.py`, unchanged apart from a header comment). The October 2026 revision fixes the following problems in that script:
 
-- **PCA saw the test data.** PCA was fitted on all 569 samples before the train/test split, so the test rows shaped the features used for training. It also ran on unscaled features, where `worst area` (variance about 300,000) dominates.
+- **PCA saw the test data.** PCA was fitted on all 569 samples before the train/test split, so the test rows shaped the features used for training. It also ran on unscaled features, where `worst area` (variance about 320,000) dominates.
 - **Scaling sat outside the hyperparameter search.** The scaler was fitted on the whole training set before `GridSearchCV` split it into folds, so each validation fold was scaled using its own values.
 - **The winner was chosen on the test set.** All seven models were scored on the test set and the best test F1 was reported as the result. That number is optimistic because the test set was used to pick it.
 - **The class labels were inverted.** scikit-learn encodes `0 = malignant` and `1 = benign`. The old confusion matrix labelled class 0 "No Cancer", precision and recall were computed for the benign class, and the old README described the encoding the wrong way round.
@@ -90,7 +90,7 @@ python -m pytest -q tests      # leakage and label checks
 python evaluate.py             # about 3 minutes on 8 CPU cores; writes results/
 ```
 
-The run should reproduce the files in `results/`. The only expected warnings come from the majority-class baseline, whose precision is undefined because it never predicts malignant.
+On the tested setup (Linux, Python 3.13.5, the pinned versions) the run reproduces the files in `results/` byte for byte; other platforms or library versions may give slightly different numbers. The only expected warnings come from the majority-class baseline, whose precision is undefined because it never predicts malignant.
 
 ## Files
 
